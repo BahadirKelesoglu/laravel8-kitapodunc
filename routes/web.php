@@ -51,12 +51,30 @@ Route::get('/admin/logout',[HomeController::class, 'logout'])->name('admin_logou
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/', [\App\Http\Controllers\admin\HomeController::class, 'index'])->name('admin_home');
+    //Category
     Route::get('category', [\App\Http\Controllers\admin\CategoryController::class, 'index'])->name('admin_category');
     Route::get('category/add', [\App\Http\Controllers\admin\CategoryController::class, 'add'])->name('admin_category_add');
     Route::post('category/create', [\App\Http\Controllers\admin\CategoryController::class, 'create'])->name('admin_category_create');
-    Route::post('category/update', [\App\Http\Controllers\admin\CategoryController::class, 'update'])->name('admin_category_update');
+    Route::get('category/edit/{id}', [\App\Http\Controllers\admin\CategoryController::class, 'edit'])->name('admin_category_edit');
+    Route::post('category/update/{id}', [\App\Http\Controllers\admin\CategoryController::class, 'update'])->name('admin_category_update');
     Route::get('category/delete/{id}', [\App\Http\Controllers\admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
     Route::get('category/show', [\App\Http\Controllers\admin\CategoryController::class, 'show'])->name('admin_category_show');
+
+    //Product
+    Route::prefix('product')->group(function() {
+
+        Route::get('/', [\App\Http\Controllers\admin\ProductController::class, 'index'])->name('admin_products');
+        Route::get('create', [\App\Http\Controllers\admin\ProductController::class, 'create'])->name('admin_product_add');
+        Route::post('store', [\App\Http\Controllers\admin\ProductController::class, 'store'])->name('admin_product_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\admin\ProductController::class, 'edit'])->name('admin_product_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\admin\ProductController::class, 'update'])->name('admin_product_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\admin\ProductController::class, 'destroy'])->name('admin_product_delete');
+        Route::get('show', [\App\Http\Controllers\admin\ProductController::class, 'show'])->name('admin_product_show');
+
+    });
+
+
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
