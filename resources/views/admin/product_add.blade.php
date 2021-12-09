@@ -2,6 +2,13 @@
 
 @section('title', 'Product Add')
 
+@section('javascript')
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+
+
+@endsection
 
 
 @section('maincontent')
@@ -19,14 +26,14 @@
                         <div class="col-lg-12">
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i> Inline Form</h4>
-                                <form class="form-group" role="form" action="{{ route('admin_product_store') }}" method="post">
+                                <form class="form-group" role="form" action="{{ route('admin_product_store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="form-group">
                                         <label >Category</label>
                                         <select class="form-control" name="category_id">
                                             @foreach($datalist as $rs)
-                                            <option value="{{ $rs->id }}">{{ $rs->title }}</option>
+                                                <option value="{{ $rs->id }}">{{ $rs->title }}</option>
                                             @endforeach
 
                                         </select>
@@ -64,10 +71,15 @@
                                         <input type="number" value="18" class="form-control" name="tax">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Detail</label>
-                                        <input type="text" class="form-control" name="detail">
-                                    </div>
+                                        <div class="form-group">
+                                            <label>Detail</label>
+                                            <textarea id="detail" name="detail"></textarea>
+                                            <script>
+                                                CKEDITOR.replace( 'detail' );
+                                            </script>
+                                        </div>
+
+
 
                                     <div class="form-group">
                                         <label>Price</label>
@@ -77,6 +89,13 @@
                                     <div class="form-group">
                                         <label>Slug</label>
                                         <input type="text" class="form-control" name="slug">
+                                    </div>
+
+                                    <div class="form-group">
+                                         <label>Image</label>
+                                        <input type="file" name="image" class="form-control">
+
+
                                     </div>
 
 

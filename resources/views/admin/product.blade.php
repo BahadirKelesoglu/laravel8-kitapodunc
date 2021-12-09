@@ -26,6 +26,7 @@
                                 <th><i class=" fa fa-edit"></i> Quantity</th>
                                 <th><i class=" fa fa-edit"></i> Price</th>
                                 <th><i class=" fa fa-edit"></i> Image</th>
+                                <th><i class=" fa fa-edit"></i> Image Gallery</th>
                                 <th><i class=" fa fa-edit"></i> Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -38,19 +39,21 @@
                                 <td>{{ $rs->title }} </td>
                                 <td>{{ $rs->quantity }} </td>
                                 <td>{{ $rs->price }} </td>
-                                <td>{{ $rs->image }} </td>
-                                <td>{{ $rs->status }} </td>
+                                <td>
+                                @if ($rs->image)
+                                    <img src="{{ Storage::url($rs->image) }}" height="30" alt="">
+                                    @endif
 
-
-
-
-
-
+                                </td>
+                                <td><a href="{{ route('admin_image_add',['product_id'=>$rs->id]) }}"
+                                       onclick="return !window.open(this.href, '','top=50 left=100 width=1200, height=700')">
+                                        <img src="{{asset('assets/admin/images')}}/gallery.png" height="20">  </a></td>
                                 <td><span class="label label-info label-mini" @if($rs->status=="True") style="background-color: forestgreen" @endif>{{ $rs->status }}</span></td>
                                 <td>
 
                                     <a href="{{route('admin_product_edit', ['id' => $rs->id])}}">  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
-                                    <a href="{{route('admin_product_delete', ['id' => $rs->id])}}" onclick="return confirm('Are you sure to delete?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                    <a href="{{route('admin_product_delete', ['id' => $rs->id])}}" onclick="return confirm('Are you sure to delete?')">
+                                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                                 </td>
                             </tr>
                             @endforeach
