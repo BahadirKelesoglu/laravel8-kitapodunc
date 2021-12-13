@@ -31,7 +31,7 @@
                             @foreach($datalist as $rs)
                             <tr>
                                 <td>{{ $rs->id }}</td>
-                                <td class="hidden-phone">{{ $rs->parent_id }}</td>
+                                <td>{{ \App\Http\Controllers\admin\CategoryController::getParentsTree($rs, $rs->title) }}</td>
                                 <td>{{ $rs->title }} </td>
 
 

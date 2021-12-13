@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 
+
+
     <!-- SITE TITTLE -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,21 +38,23 @@
     <script src="{{asset('assets')}}/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="{{asset('assets')}}/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>navbar example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
     @yield('css')
     @yield('headerjs')
+
+
 </head>
 
-<body class="body-wrapper">
-<div class="row">
-    <div class="col-md-6" style="background-color: red">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi, dignissimos dolores, doloribus dolorum eos est, excepturi exercitationem fugiat hic id iure laborum natus necessitatibus nemo nesciunt nihil optio provident quod repellat tempora tempore totam ullam vel veniam voluptates voluptatum? Aliquid architecto asperiores blanditiis consequuntur dignissimos ex excepturi facere facilis, fuga fugiat hic minus odit, quasi quisquam quo rem vel velit. Alias architecto assumenda consectetur, corporis cum debitis dignissimos dolorum excepturi fugit iste magnam neque nihil nobis non numquam omnis quaerat rem rerum sed sequi sit soluta tempore, ut voluptas voluptatum. Consectetur delectus earum ex fugit itaque nulla odit optio perferendis quasi sunt. Ad aliquam blanditiis dolor, dolores ex explicabo fuga illo in inventore ipsum labore maxime modi molestias officiis praesentium quos saepe, sapiente tempora tenetur vero. Assumenda distinctio dolores dolorum ducimus eos impedit inventore, laborum minus officiis quidem quo quod tempora velit. Aliquid cum dignissimos, dolores, incidunt iste nihil numquam praesentium provident, rem repudiandae rerum sit ut. Amet, distinctio explicabo. Ab dignissimos error est explicabo fugiat, ipsam itaque maxime necessitatibus non obcaecati perspiciatis praesentium, provident quibusdam quod quos recusandae reiciendis repellendus sunt suscipit tempore temporibus totam ut vero voluptate, voluptatum. Architecto assumenda cum expedita fuga libero officiis quam totam?
-
-    </div>
-    <div class="col-md-6" style="background-color: blue">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci animi aspernatur assumenda at aut blanditiis cumque deserunt dolor dolorem enim error est facilis impedit iusto libero molestiae nam nemo neque nostrum obcaecati odio optio quam quisquam reiciendis, saepe soluta sunt tempora temporibus unde ut voluptate voluptatem voluptatum. Animi asperiores consequatur culpa cum distinctio doloremque eius explicabo id illo, iure laborum, laudantium maiores nemo nesciunt non numquam odio quisquam similique? Ad architecto asperiores aspernatur assumenda aut beatae debitis, dolor dolores doloribus esse excepturi facere hic, id, maiores natus necessitatibus nobis nulla provident totam ut! Ad aperiam dolorem ex fuga nesciunt porro quia? Ad amet aspernatur cum deleniti eius eligendi exercitationem impedit ipsam libero maiores mollitia non praesentium quaerat quasi quidem, rem reprehenderit, saepe veniam. Aliquid inventore labore maiores perferendis reiciendis repellendus sapiente vel! Adipisci aliquid aspernatur at atque aut consequuntur culpa cumque delectus doloremque eos eveniet exercitationem, expedita explicabo facere hic iure libero magni minus natus nemo neque nostrum obcaecati perspiciatis possimus provident quaerat quos recusandae repellendus sapiente sequi tempore, vel velit voluptas. Adipisci aliquid animi, dicta error iste pariatur soluta voluptate? Consequatur cum eos facere nisi nobis odit, saepe sit. Assumenda corporis dignissimos dolores et nisi quaerat, sit temporibus.
-    </div>
-</div>
 
 
 

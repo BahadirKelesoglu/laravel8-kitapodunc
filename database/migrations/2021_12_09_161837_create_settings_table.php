@@ -22,11 +22,11 @@ class CreateSettingsTable extends Migration
             $table->string('address', 150)->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('fax', 20)->nullable();
-            $table->string('email', 75)->default(1);
-            $table->string('smtpserver', 75)->default(5);
-            $table->string('smtpemail', 75)->default(18);
+            $table->string('email', 75);
+            $table->string('smtpserver', 75);
+            $table->string('smtpemail', 75);
             $table->string('smtppassword', 20)->nullable();
-            $table->integer('smtpport')->nullable()->default(0);
+            $table->integer('smtpport')->nullable();
             $table->string('facebook',100)->nullable();
             $table->string('instagram',100)->nullable();
             $table->string('twitter',100)->nullable();

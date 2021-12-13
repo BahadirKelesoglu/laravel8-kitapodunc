@@ -32,7 +32,7 @@
                                         <label >Category</label>
                                         <select class="form-control" name="category_id">
                                             @foreach($datalist as $rs)
-                                                <option value="{{ $rs->id }}" @if ($rs->id == $data->category_id) selected="selected" @endif>{{ $rs->title }}</option>
+                                                <option value="{{ $rs->id }}" @if ($rs->id == $data->category_id) selected="selected" @endif>{{ \App\Http\Controllers\admin\CategoryController::getParentsTree($rs, $rs->title) }}</option>
                                             @endforeach
 
                                         </select>
@@ -90,9 +90,9 @@
 
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="image" value="{{ $data->image }}" class="form-control">
+                                        <input type="file" name="image" src="{{ $data->image }}" class="form-control">
                                         @if ($data->image)
-                                            <img src="{{ Storage::url($data->image) }}" height="100" alt="">
+                                            <img src="{{ Storage::url($data->image) }}" height="100">
                                         @endif
 
                                     </div>

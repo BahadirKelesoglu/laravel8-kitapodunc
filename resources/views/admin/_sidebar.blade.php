@@ -27,6 +27,13 @@
 
                 </ul>
             </li>
+
+            <li class="sub-menu">
+                <a href="{{ route('admin_setting') }}" >
+                    <i class="fa fa-cogs"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
         </ul>
         <!-- sidebar menu end-->
     </div>
