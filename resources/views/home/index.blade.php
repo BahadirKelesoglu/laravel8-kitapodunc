@@ -1,14 +1,12 @@
 @extends('layouts.home')
 
-@section('title', 'Borrow Book')
+@section('title', $setting->title)
 @section('css')
 
 
 @endsection
-@section('desc',)
-
-@endsection
-@section('key','Bilgisayar, telefon')
+@section('desc',){{$setting->description}}@endsection
+@section('key',$setting->keywords)
 
 @section('content')
 

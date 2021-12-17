@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +19,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 //adres cubuguna /anasayfa yazarsa home a yönlendir
-Route::redirect('/anasayfa', '/home');
+Route::redirect('/anasayfa', '/');
 
 //tek dosya çağıracaksak
 //name icine yazdığımızı view(index.blade.php) den name yazarak çağırabiliriz
-Route::get('/', function () {
-    return view('home.index', ['name' => 'BAHADIR KELEŞOĞLU']);
-});
+
 
 //home controller içindeki birden fazla view çağıracaksak
-Route::get('/home', [HomeController::class, 'index'])->name('HomeController');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/', [HomeController::class, 'index'])->name('HomeController');
+Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/sendmessage', [HomeController::class, 'sendmessage'])->name('sendmessage');
+Route::get('/book/{id}/{slug}', [HomeController::class, 'book'])->name('book');
+Route::get('/categorybooks/{id}/{slug}', [HomeController::class, 'categorybooks'])->name('categorybooks');
+Route::get('/blank', [HomeController::class, 'blank'])->name('blank');
+Route::get('/addtocard/{id}', [HomeController::class, 'addtocard'])->name('addtocard');
+Route::post('/getbook', [HomeController::class, 'getbook'])->name('getbook');
+Route::get('/booklist/{search}', [HomeController::class, 'booklist'])->name('booklist');
+
+Route::middleware(['auth'])->prefix('myaccount')->namespace('myaccount')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('myprofile');
+    Route::get('/myreviews', [UserController::class, 'myreviews'])->name('myreviews');
+    Route::get('/destroymyreview/{id}', [UserController::class, 'destroymyreview'])->name('user_review_delete');
+
+});
+
+Route::middleware(['auth'])->prefix('user')->namespace('user')->group(function () {
+    Route::get('/profile', [UserController::class, 'index'])->name('userprofile');
+});
 
 //Login
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
@@ -36,7 +56,9 @@ Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login'
 //login check
 Route::post('/admin/logincheck', [HomeController::class, 'logincheck'])->name('admin_logincheck');
 
-Route::get('/admin/logout',[HomeController::class, 'logout'])->name('admin_logout');
+Route::get('/logout',[HomeController::class, 'logout'])->name('admin_logout');
+
+
 
 //Admin
 
@@ -47,6 +69,9 @@ Route::get('/admin/logout',[HomeController::class, 'logout'])->name('admin_logou
 
 
 //login halledince // ları kaldır ve uri: içindeki admin / ları sil yapamazsan 10.video
+
+
+
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
@@ -60,24 +85,35 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('category/delete/{id}', [\App\Http\Controllers\admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
     Route::get('category/show', [\App\Http\Controllers\admin\CategoryController::class, 'show'])->name('admin_category_show');
 
-    //Product
-    Route::prefix('product')->group(function() {
+    //Books
+    Route::prefix('book')->group(function() {
 
-        Route::get('/', [\App\Http\Controllers\admin\ProductController::class, 'index'])->name('admin_products');
-        Route::get('create', [\App\Http\Controllers\admin\ProductController::class, 'create'])->name('admin_product_add');
-        Route::post('store', [\App\Http\Controllers\admin\ProductController::class, 'store'])->name('admin_product_store');
-        Route::get('edit/{id}', [\App\Http\Controllers\admin\ProductController::class, 'edit'])->name('admin_product_edit');
-        Route::post('update/{id}', [\App\Http\Controllers\admin\ProductController::class, 'update'])->name('admin_product_update');
-        Route::get('delete/{id}', [\App\Http\Controllers\admin\ProductController::class, 'destroy'])->name('admin_product_delete');
-        Route::get('show', [\App\Http\Controllers\admin\ProductController::class, 'show'])->name('admin_product_show');
+        Route::get('/', [\App\Http\Controllers\admin\BookController::class, 'index'])->name('admin_books');
+        Route::get('create', [\App\Http\Controllers\admin\BookController::class, 'create'])->name('admin_book_add');
+        Route::post('store', [\App\Http\Controllers\admin\BookController::class, 'store'])->name('admin_book_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\admin\BookController::class, 'edit'])->name('admin_book_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\admin\BookController::class, 'update'])->name('admin_book_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\admin\BookController::class, 'destroy'])->name('admin_book_delete');
+        Route::get('show', [\App\Http\Controllers\admin\BookController::class, 'show'])->name('admin_book_show');
+
+    });
+
+    //Books
+    Route::prefix('message')->group(function() {
+
+        Route::get('/', [\App\Http\Controllers\admin\MessageController::class, 'index'])->name('admin_message');
+        Route::get('edit/{id}', [\App\Http\Controllers\admin\MessageController::class, 'edit'])->name('admin_message_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\admin\MessageController::class, 'update'])->name('admin_message_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\admin\MessageController::class, 'destroy'])->name('admin_message_delete');
+        Route::get('show', [\App\Http\Controllers\admin\MessageController::class, 'show'])->name('admin_message_show');
 
     });
 
     //Image
     Route::prefix('image')->group(function() {
-        Route::get('create/{product_id}', [\App\Http\Controllers\admin\ImageController::class, 'create'])->name('admin_image_add');
-        Route::post('store/{product_id}', [\App\Http\Controllers\admin\ImageController::class, 'store'])->name('admin_image_store');
-        Route::get('delete/{id}/{product_id}', [\App\Http\Controllers\admin\ImageController::class, 'destroy'])->name('admin_image_delete');
+        Route::get('create/{book_id}', [\App\Http\Controllers\admin\ImageController::class, 'create'])->name('admin_image_add');
+        Route::post('store/{book_id}', [\App\Http\Controllers\admin\ImageController::class, 'store'])->name('admin_image_store');
+        Route::get('delete/{id}/{book_id}', [\App\Http\Controllers\admin\ImageController::class, 'destroy'])->name('admin_image_delete');
         Route::get('show', [\App\Http\Controllers\admin\ImageController::class, 'show'])->name('admin_image_show');
 
     });
@@ -88,6 +124,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 
 });
+
+
+
+
+
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

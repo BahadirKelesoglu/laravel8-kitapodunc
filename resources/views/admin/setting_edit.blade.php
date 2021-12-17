@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Product Edit')
+@section('title', 'Setting Edit')
 
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -122,11 +122,6 @@
                                         CKEDITOR.replace( 'references' );
                                         CKEDITOR.replace( 'contact' );
                                     </script>
-
-                                    <div class="form-group">
-                                        <label>Slug</label>
-                                        <input type="text" value="{{ $data->slug }}" class="form-control" name="slug">
-                                    </div>
 
 
                                     <div class="form-group">

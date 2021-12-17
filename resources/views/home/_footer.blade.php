@@ -1,7 +1,9 @@
 <!--============================
 =            Footer            =
 =============================-->
-
+@php
+$setting = \App\Http\Controllers\HomeController::getsetting()
+@endphp
 <footer class="footer section section-sm">
     <!-- Container Start -->
     <div class="container">
@@ -12,9 +14,9 @@
                     <!-- footer logo -->
                     <img src="{{asset('assets')}}/images/logo-footer.png" alt="">
                     <!-- description -->
-                    <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <strong style="color: white">Company: {{$setting->company}}</strong>  <br>
+                    <strong style="color: white">Address: {{$setting->address}}</strong>  <br>
+                    <strong style="color: white">Phone: {{$setting->phone}}</strong>  <br>
                 </div>
             </div>
             <!-- Link list -->
@@ -22,11 +24,11 @@
                 <div class="block">
                     <h4>Site Pages</h4>
                     <ul>
-                        <li><a href="#">Boston</a></li>
-                        <li><a href="#">How It works</a></li>
-                        <li><a href="#">Deals & Coupons</a></li>
-                        <li><a href="#">Articls & Tips</a></li>
-                        <li><a href="terms-condition.html">Terms & Conditions</a></li>
+                        <li><a href="{{route('aboutus')}}">About Us</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
+                        <li><a href="{{route('references')}}">References</a></li>
+                        <li><a href="{{route('faq')}}">FAQ</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -76,19 +78,23 @@
             <div class="col-sm-6 col-12">
                 <!-- Copyright -->
                 <div class="copyright">
-                    <p>Copyright © <script>
+                    <p><script>
                             var CurrentYear = new Date().getFullYear()
                             document.write(CurrentYear)
-                        </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a></p>
+                        </script> {{$setting->company}} </p>
+
+                    <a class="text-primary" href="{{$setting->email}}" target="_blank">{{$setting->email}}</a>
                 </div>
             </div>
             <div class="col-sm-6 col-12">
                 <!-- Social Icons -->
                 <ul class="social-media-icons text-right">
-                    <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
-                    <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
-                    <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
-                    <li><a class="fa fa-vimeo" href=""></a></li>
+
+                       @if($setting->instagram !=null) <li><a class="fa fa-instagram" href="{{$setting->instagram}}" target="_blank"></a></li>@endif
+                       @if($setting->twitter !=null) <li><a class="fa fa-twitter" href="{{$setting->twitter}}" target="_blank"></a></li>@endif
+                       @if($setting->youtube !=null) <li><a class="fa fa-youtube" href="{{$setting->youtube}}" target="_blank"></a></li>@endif
+                       @if($setting->facebook !=null) <li><a class="fa fa-facebook" href="{{$setting->facebook}}" target="_blank"></a></li>@endif
+
                 </ul>
             </div>
         </div>

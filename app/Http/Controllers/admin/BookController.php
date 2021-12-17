@@ -4,13 +4,13 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class ProductController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $datalist = Product::all();
-        return view('admin.product', ['datalist'=> $datalist]);
+        $datalist = Book::all();
+        return view('admin.book', ['datalist'=> $datalist]);
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function create()
     {
         $datalist = Category::with('children')->get();
-        return view('admin.product_add', ['datalist' => $datalist]);
+        return view('admin.book_add', ['datalist' => $datalist]);
     }
 
     /**
@@ -42,36 +42,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data=new Product;
+        $data=new Book();
 
 
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->category_id = $request->input('category_id');
         $data->user_id = Auth::id();
-        $data->price = $request->input('price');
-        $data->quantity = $request->input('quantity');
-        $data->minquantity = $request->input('minquantity');
-        $data->tax = $request->input('tax');
+        $data->author = $request->input('author');
+        $data->pageno = $request->input('pageno');
+        $data->subject = $request->input('subject');
+        $data->publishername = $request->input('publishername');
+        $data->publishdate = $request->input('publishdate');
         $data->detail = $request->input('detail');
+        $data->slug = $request->input('slug');
         $data->image = Storage::putFile('images', $request->file('image'));
         $data->save();
 
-        return redirect()->route('admin_products');
+        return redirect()->route('admin_books');
     }
-
-
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Book $book)
     {
         //
     }
@@ -79,60 +78,58 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product,$id)
+    public function edit(Book $book, $id)
     {
-        $data= Product::find($id);
+        $data= Book::find($id);
         $datalist = Category::with('children')->get();
-        return view('admin.product_edit', ['data' => $data, 'datalist' => $datalist]);
+        return view('admin.book_edit', ['data' => $data, 'datalist' => $datalist]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product,$id)
+    public function update(Request $request, Book $book, $id)
     {
-        $data= Product::find($id);
+        $data= Book::find($id);
 
         $data->title = $request->input('title');
         $data->keywords = $request->input('keywords');
         $data->description = $request->input('description');
-        $data->slug = $request->input('slug');
         $data->status = $request->input('status');
         $data->category_id = $request->input('category_id');
         $data->user_id = Auth::id();
-        $data->price = $request->input('price');
-        $data->quantity = $request->input('quantity');
-        $data->minquantity = $request->input('minquantity');
-        $data->tax = $request->input('tax');
+        $data->author = $request->input('author');
+        $data->pageno = $request->input('pageno');
+        $data->subject = $request->input('subject');
+        $data->publishername = $request->input('publishername');
+        $data->publishdate = $request->input('publishdate');
         $data->detail = $request->input('detail');
+        $data->slug = $request->input('slug');
         if ($request->file('image')!=null)
         {
             $data->image = Storage::putFile('images', $request->file('image'));
         }
         $data->save();
-        return redirect()->route('admin_products');
-
+        return redirect()->route('admin_books');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product,$id)
+    public function destroy(Book $book, $id)
     {
-        //DB::table('products')->where('id', '=', $id)->delete();
-
-        $data = Product::find($id);
+        $data = Book::find($id);
         $data->delete();
-        return redirect()->route('admin_products');
+        return redirect()->route('admin_books');
     }
 }

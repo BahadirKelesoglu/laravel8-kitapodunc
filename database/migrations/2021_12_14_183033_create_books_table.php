@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('title',150);
             $table->string('keywords')->nullable();
@@ -21,13 +21,14 @@ class CreateProductsTable extends Migration
             $table->string('image',75)->nullable();
             $table->integer('category_id')->nullable();
             $table->integer('user_id')->nullable();
-            $table->float('price')->nullable();
-            $table->integer('quantity')->default(1);
-            $table->integer('minquantity')->default(5);
-            $table->integer('tax')->default(18);
+            $table->text('author')->nullable();
+            $table->float('pageno')->nullable();
+            $table->text('subject')->nullable();
+            $table->text('publishername')->nullable();
+            $table->date('publishdate')->nullable();
             $table->text('detail')->nullable();
-            $table->string('slug',100);
             $table->string('status',5)->nullable()->default('False');
+            $table->string('slug', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -39,6 +40,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('books');
     }
 }

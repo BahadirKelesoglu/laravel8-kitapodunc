@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2>Trending Adds</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+                    <h2>Popüler Kitaplar</h2>
+                    <p>En Çok Satan Kitaplarımızı Sizler İçin Düzenledik.</p>
                 </div>
             </div>
         </div>
@@ -21,27 +21,29 @@
             <!-- offer 01 -->
             <div class="col-lg-12">
                 <div class="trending-ads-slide">
+                    @foreach($slider as $rs)
+                    <!-- product card first -->
                     <div class="col-sm-12 col-lg-4">
-                        <!-- product card -->
+                        <!-- product card first? -->
                         <div class="product-item bg-light">
                             <div class="card">
                                 <div class="thumb-content">
                                     <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="{{asset('assets')}}/images/products/products-1.jpg" alt="Card image cap">
+                                    <a href="{{route('book', ['id'=>$rs->id,'slug'=>$rs->slug])}}">
+                                        <img class="card-img-top img-fluid" style="height: 400px" src="{{Storage::url($rs->image)}}" alt="Card image cap">
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+                                    <h4 class="card-title"><a href="single.html">{{$rs->title}}</a></h4>
                                     <ul class="list-inline product-meta">
                                         <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+                                            <a><i class="fa fa-address-book"></i>{{$rs->author}}</a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="#"><i class="fa fa-calendar"></i>26th December</a>
+                                            <a><i class="fa fa-calendar"></i>{{$rs->publishdate}}</a>
                                         </li>
                                     </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+                                    <p class="card-text">{{$rs->subject}}</p>
                                     <div class="product-ratings">
                                         <ul class="list-inline">
                                             <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
@@ -56,115 +58,11 @@
                         </div>
 
 
-
+                        <!-- product card first END? -->
                     </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="{{asset('assets')}}/images/products/products-2.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    @endforeach
+                    <!-- product card first END -->
 
-
-
-                    </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="{{asset('assets')}}/images/products/products-3.jpeg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <!-- product card -->
-                        <div class="product-item bg-light">
-                            <div class="card">
-                                <div class="thumb-content">
-                                    <!-- <div class="price">$200</div> -->
-                                    <a href="single.html">
-                                        <img class="card-img-top img-fluid" src="{{asset('assets')}}/images/products/products-4.jpg" alt="Card image cap">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="single.html">Full Study Table Combo</a></h4>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="#"><i class="fa fa-calendar"></i>26th December</a>
-                                        </li>
-                                    </ul>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
 

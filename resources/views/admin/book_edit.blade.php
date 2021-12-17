@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Product Edit')
+@section('title', 'Book Edit')
 
 @section('javascript')
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -24,8 +24,8 @@
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i> Inline Form</h4>
-                                <form class="form-group" role="form" action="{{ route('admin_product_update',['id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
+                                <h4 class="mb"><i class="fa fa-angle-right"></i>Edit Book</h4>
+                                <form class="form-group" role="form" action="{{ route('admin_book_update',['id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="form-group">
@@ -56,18 +56,28 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Quantity</label>
-                                        <input type="number" value="{{ $data->quantity }}" class="form-control" name="quantity">
+                                        <label>Author</label>
+                                        <input type="text" value="{{ $data->author }}" class="form-control" name="author">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Minimum Quantity</label>
-                                        <input type="number" value="{{ $data->minquantity }}" class="form-control" name="minquantity">
+                                        <label>Page Number</label>
+                                        <input type="number" value="{{ $data->pageno }}" class="form-control" name="pageno">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Tax</label>
-                                        <input type="number" value="{{ $data->tax }}" class="form-control" name="tax">
+                                        <label>Subject</label>
+                                        <input type="text" value="{{ $data->subject }}" class="form-control" name="subject">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Publisher Name</label>
+                                        <input type="text" value="{{ $data->publishername }}" class="form-control" name="publishername">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Publish Date</label>
+                                        <input type="date" value="{{ $data->publishdate }}" class="form-control" name="publishdate">
                                     </div>
 
                                     <div class="form-group">
@@ -78,15 +88,6 @@
                                         </script>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Price</label>
-                                        <input type="number" value="{{ $data->price }}" class="form-control" name="price">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Slug</label>
-                                        <input type="text" value="{{ $data->slug }}" class="form-control" name="slug">
-                                    </div>
 
                                     <div class="form-group">
                                         <label>Image</label>
@@ -95,6 +96,11 @@
                                             <img src="{{ Storage::url($data->image) }}" height="100">
                                         @endif
 
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Slug</label>
+                                        <input type="text" value="{{ $data->slug }}" class="form-control" name="slug">
                                     </div>
 
 
@@ -106,7 +112,7 @@
 
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-theme">Add Category</button>
+                                    <button type="submit" class="btn btn-theme">Edit Book</button>
                                 </form>
                             </div><!-- /form-panel -->
                         </div><!-- /col-lg-12 -->

@@ -18,7 +18,7 @@
                     <div class="row mt">
                         <div class="col-lg-12">
                             <div class="form-panel">
-                                <h4 class="mb"><i class="fa fa-angle-right"></i> Inline Form</h4>
+                                <h4 class="mb"><i class="fa fa-angle-right"></i> Category Books Add</h4>
                                 <form class="form-group" role="form" action="{{ route('admin_category_create') }}" method="post">
                                     @csrf
 

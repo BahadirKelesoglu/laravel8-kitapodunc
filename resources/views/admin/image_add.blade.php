@@ -26,7 +26,7 @@
                         <div class="col-lg-12">
                             <div class="form-panel">
                                 <h4 class="mb"><i class="fa fa-angle-right"></i> {{$data->title}}</h4>
-                                <form class="form-group" role="form" action="{{ route('admin_image_store',['product_id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
+                                <form class="form-group" role="form" action="{{ route('admin_image_store',['book_id'=>$data->id]) }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
 
@@ -63,7 +63,7 @@
                                                 @endif
 
                                             </td>
-                                            <td><a href="{{route('admin_image_delete', ['id' => $rs->id, 'product_id' => $data->id])}}" onclick="return confirm('Are you sure to delete?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
+                                            <td><a href="{{route('admin_image_delete', ['id' => $rs->id, 'book_id' => $data->id])}}" onclick="return confirm('Are you sure to delete?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                                             </td>
                                         </tr>
                                         @endforeach

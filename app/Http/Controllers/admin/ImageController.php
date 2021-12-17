@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\Image;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -27,10 +27,10 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($product_id)
+    public function create($book_id)
     {
-        $data = Product::find($product_id);
-        $images = DB::table('images')->where('product_id', '=', $product_id)->get();
+        $data = Book::find($book_id);
+        $images = DB::table('images')->where('book_id', '=', $book_id)->get();
         return view('admin.image_add', ['data' => $data,'images'=> $images]);
     }
 
@@ -40,15 +40,15 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $product_id)
+    public function store(Request $request, $book_id)
     {
         $data=new Image;
         $data->title = $request->input('title');
-        $data->product_id = $product_id;
+        $data->book_id = $book_id;
         $data->image = Storage::putFile('images', $request->file('image'));
         $data->save();
 
-        return redirect()->route('admin_image_add',['product_id'=>$product_id]);
+        return redirect()->route('admin_image_add',['book_id'=>$book_id]);
     }
 
     /**
@@ -91,10 +91,10 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image,$id,$product_id)
+    public function destroy(Image $image,$id,$book_id)
     {
         $data = Image::find($id);
         $data->delete();
-        return redirect()->route('admin_image_add',['product_id'=>$product_id]);
+        return redirect()->route('admin_image_add',['book_id'=>$book_id]);
     }
 }
