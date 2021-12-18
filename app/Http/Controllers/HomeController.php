@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\Review;
@@ -130,8 +131,8 @@ class HomeController extends Controller
         return view('home.references', ['setting'=>$setting]);
     }
     public function faq(){
-        $setting = Setting::first();
-        return view('home.about', ['setting'=>$setting]);
+        $datalist = Faq::all()->sortBy('position');
+        return view('home.faq', ['datalist'=>$datalist]);
     }
 #adres satırına ../test/5 gibi int yazınca onu basıyor
 #asıl yazıyı burda yazabiliyoruz return view koduyla view dosyasının home dosyasındaki test

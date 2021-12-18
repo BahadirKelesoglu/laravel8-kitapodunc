@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-12">
                             @auth()
-                            <button type="submit" class="btn btn-main">Sumbit</button>
+                            <button type="submit" class="btn btn-main">Submit</button>
                                 @else
                             <a href="/login" class="add-button">For Submit Review Login</a>
                                 @endauth

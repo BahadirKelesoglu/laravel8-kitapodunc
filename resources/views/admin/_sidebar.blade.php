@@ -26,6 +26,7 @@
                 <ul class="sub">
                     <li><a  href="{{ route('admin_category') }}">Category</a></li>
                     <li><a  href="{{ route('admin_books') }}">Books</a></li>
+                    <li><a  href="{{ route('admin_review') }}">Reviews</a></li>
 
                 </ul>
             </li>
@@ -41,6 +42,12 @@
                 <a href="{{ route('admin_message') }}" >
                     <i class="fa fa-cogs"></i>
                     <span>Contact Messages</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="{{ route('admin_faq') }}" >
+                    <i class="fa fa-cogs"></i>
+                    <span>FAQ</span>
                 </a>
             </li>
         </ul>

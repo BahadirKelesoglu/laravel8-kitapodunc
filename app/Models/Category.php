@@ -13,8 +13,8 @@ class Category extends Model
 
     protected $appends = ['parent',];
 
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function books(){
+        return $this->hasMany(Book::class);
     }
 
     public function parent(){

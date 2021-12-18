@@ -118,10 +118,30 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     });
 
+    Route::prefix('review')->group(function() {
+        Route::get('/', [\App\Http\Controllers\admin\ReviewController::class, 'index'])->name('admin_review');
+        Route::post('update/{id}', [\App\Http\Controllers\admin\ReviewController::class, 'update'])->name('admin_review_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\admin\ReviewController::class, 'destroy'])->name('admin_review_delete');
+        Route::get('show/{id}', [\App\Http\Controllers\admin\ReviewController::class, 'show'])->name('admin_review_show');
+
+    });
+
     #SETTİNG
     Route::get('setting', [\App\Http\Controllers\admin\SettingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update', [\App\Http\Controllers\admin\SettingController::class, 'update'])->name('admin_setting_update');
 
+    #FAQ
+    Route::prefix('faq')->group(function() {
+
+        Route::get('/', [\App\Http\Controllers\admin\FaqController::class, 'index'])->name('admin_faq');
+        Route::get('create', [\App\Http\Controllers\admin\FaqController::class, 'create'])->name('admin_faq_add');
+        Route::post('store', [\App\Http\Controllers\admin\FaqController::class, 'store'])->name('admin_faq_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\admin\FaqController::class, 'edit'])->name('admin_faq_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\admin\FaqController::class, 'update'])->name('admin_faq_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\admin\FaqController::class, 'destroy'])->name('admin_faq_delete');
+        Route::get('show', [\App\Http\Controllers\admin\FaqController::class, 'show'])->name('admin_faq_show');
+
+    });
 
 });
 
