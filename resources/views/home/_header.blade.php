@@ -61,6 +61,9 @@
                                             <li class="dropdown">
                                                 <a tabindex="-1" href="{{route('myreviews')}}">Reviews</a>
                                             </li>
+                                            <li class="dropdown">
+                                                <a tabindex="-1" href="{{route('user_reservations')}}">Reservations</a>
+                                            </li>
                                         </ul>
 
                                 </div>

@@ -15,8 +15,8 @@
                 <div class="widget dashboard-links">
                     <ul>
                         <li><a class="my-1 d-inline-block" href="{{route('myprofile')}}">My Profile</a></li>
-                        <li><a class="my-1 d-inline-block" href="">Saved Offer <span>(5)</span></a></li>
-                        <li><a class="my-1 d-inline-block" href="">Favourite Stores <span>(3)</span></a></li>
+                        <li><a class="my-1 d-inline-block" href="{{route('user_reservations')}}">Reservations <span>(5)</span></a></li>
+                        <li><a class="my-1 d-inline-block" href="{{route('myreviews')}}">Reviews <span>(3)</span></a></li>
                         <li><a class="my-1 d-inline-block" href="{{route('logout')}}">Logout</a></li>
                     </ul>
                 </div>

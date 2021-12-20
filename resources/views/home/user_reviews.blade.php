@@ -60,7 +60,7 @@
 @include('home._header')
 <div class="col-12">
     <div class="col-9 col-md-offset-3">
-        <strong><h4> Basic Table</h4></strong>
+        <strong><h4> Reviews</h4></strong>
         <hr>
         <table class="table">
             <thead>

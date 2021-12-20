@@ -215,32 +215,31 @@
 
 
 
-                    <!-- Safety tips widget -->
-                    <div class="widget disclaimer">
-                        <h5 class="widget-header">Safety Tips</h5>
-                        <ul>
-                            <li>Meet seller at a public place</li>
-                            <li>Check the item before you buy</li>
-                            <li>Pay only after collecting the item</li>
-                            <li>Pay only after collecting the item</li>
-                        </ul>
-                    </div>
-                    <!-- Coupon Widget -->
-                    <div class="widget coupon text-center">
-                        <!-- Coupon description -->
-                        <p>Have a great product to post ? Share it with
-                            your fellow users.
-                        </p>
-                        <!-- Submii button -->
-                        <a href="" class="btn btn-transparent-white">Submit Listing</a>
-                    </div>
+                @auth()
 
-                    <a href="{{route('addtocard', ['id'=>$data->id])}}">
+
+
+
+                    <a href="{{route('user_reservation_add',[$data->id])}}">
                         <div class="widget price text-center">
+
+
                             <h4>Add For Rent Apply</h4>
                             <i style="font-size: 30px" class="fa fa-shopping-basket"></i>
                         </div>
                     </a>
+
+                    @else
+                        <a href="{{route('login')}}">
+                            <div class="widget price text-center">
+
+
+                                <h4>Login For Rent Apply</h4>
+                                <i style="font-size: 30px" class="fa fa-shopping-basket"></i>
+                            </div>
+                        </a>
+                    @endauth
+
 
                 </div>
             </div>
