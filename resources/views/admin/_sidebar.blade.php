@@ -4,7 +4,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href="{{ route('admin_home') }}"><img src="{{ asset('assets')}}/admin/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+            <p class="centered"><a href="{{ route('admin_home') }}"><img src="{{asset('storage/'. Auth::user()->profile_photo_path)}}" class="img-circle" width="60"></a></p>
             @auth
             <h5 class="centered">{{Auth::user()->name}}</h5>
             @endauth
@@ -32,9 +32,32 @@
             </li>
 
             <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-desktop"></i>
+                    <span>Reservations</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="{{ route('admin_reservations') }}">All</a></li>
+                    <li><a  href="{{ route('admin_reservation_list',['status'=>'New']) }}">New</a></li>
+                    <li><a  href="{{ route('admin_reservation_list',['status'=>'Accepted']) }}">Accepted</a></li>
+                    <li><a  href="{{ route('admin_reservation_list',['status'=>'Cancelled']) }}">Cancelled</a></li>
+                    <li><a  href="{{ route('admin_reservation_list',['status'=>'Completed']) }}">Completed</a></li>
+
+
+                </ul>
+            </li>
+
+            <li class="sub-menu">
                 <a href="{{ route('admin_setting') }}" >
                     <i class="fa fa-cogs"></i>
                     <span>Settings</span>
+                </a>
+            </li>
+
+            <li class="sub-menu">
+                <a href="{{ route('admin_users') }}" >
+                    <i class="fa fa-cogs"></i>
+                    <span>User Transactions</span>
                 </a>
             </li>
 
@@ -50,6 +73,7 @@
                     <span>FAQ</span>
                 </a>
             </li>
+
         </ul>
         <!-- sidebar menu end-->
     </div>

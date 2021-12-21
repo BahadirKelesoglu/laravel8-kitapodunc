@@ -50,6 +50,10 @@
 
                                         <a id="dLabel" role="button" data-toggle="dropdown" class="nav-link login-button">
                                             <strong>{{Auth::user()->name}}</strong>
+                                            @if(Auth::user()->roles->pluck('name')->contains('admin'))
+                                                <br>
+                                                <strong> <span>ADMİN</span></strong
+                                            @endif
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu multi-level" role="menu">
@@ -64,6 +68,13 @@
                                             <li class="dropdown">
                                                 <a tabindex="-1" href="{{route('user_reservations')}}">Reservations</a>
                                             </li>
+
+                                            @if(Auth::user()->roles->pluck('name')->contains('admin'))
+                                                <li class="dropdown">
+                                                    <a tabindex="-1" href="{{route('admin_home')}}" target="_blank">Admin Panel</a>
+                                                </li>
+                                            @endif
+
                                         </ul>
 
                                 </div>

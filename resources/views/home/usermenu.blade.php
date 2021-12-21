@@ -17,7 +17,10 @@
                         <li><a class="my-1 d-inline-block" href="{{route('myprofile')}}">My Profile</a></li>
                         <li><a class="my-1 d-inline-block" href="{{route('user_reservations')}}">Reservations <span>(5)</span></a></li>
                         <li><a class="my-1 d-inline-block" href="{{route('myreviews')}}">Reviews <span>(3)</span></a></li>
-                        <li><a class="my-1 d-inline-block" href="{{route('logout')}}">Logout</a></li>
+                        @if(Auth::user()->roles->pluck('name')->contains('admin'))
+                            <li><a class="my-1 d-inline-block" href="{{route('admin_home')}}">Admin Panel</a></li>
+                        @endif
+
                     </ul>
                 </div>
             </div>
