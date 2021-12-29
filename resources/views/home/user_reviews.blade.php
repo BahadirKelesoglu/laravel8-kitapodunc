@@ -58,8 +58,15 @@
 <body>
 
 @include('home._header')
-<div class="col-12">
-    <div class="col-9 col-md-offset-3">
+<div class="container">
+<div class="row">
+
+<div class="col-md-3">
+    @include('home.usermenu')
+
+</div>
+
+    <div class="col-md-9" style="background: white">
         <strong><h4> Reviews</h4></strong>
         <hr>
         <table class="table">
@@ -90,19 +97,20 @@
                 <td>{{$rs->status}}</td>
                 <td>{{$rs->created_at}}</td>
                 <td>
-                    <a href="{{route('user_review_delete',['id'=> $rs->id])}}" onclick="return confirm('Are you sure to delete?')">sdaadsads</a>
+                    <a href="{{route('user_review_delete',['id'=> $rs->id])}}" onclick="return confirm('Are you sure to delete?')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a>
                 </td>
             </tr>
             @endforeach
             </tbody>
         </table>
-    </div><! --/content-panel -->
-    <div class="col-3">
-        @include('home.usermenu')
 
-    </div>
-</div><!-- /col-md-12 -->
+
+    </div> <! --/content-panel -->
+
+
+</div>
+</div><!-- /row -->
+
 @include('home._footer')
-
 </body>
 </html>

@@ -58,9 +58,17 @@
 <body>
 
 @include('home._header')
-<div class="col-12">
-    <div class="col-8 col-md-offset-4">
-        <strong><h4> Reservations</h4></strong>
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-md-3">
+        @include('home.usermenu')
+
+    </div>
+    <div class="col-md-9">
+
         <hr>
         <table class="table">
             <thead>
@@ -88,11 +96,10 @@
             </tbody>
         </table>
     </div><! --/content-panel -->
-    <div class="col-1">
-@include('home.usermenu')
 
-    </div>
-</div><!-- /col-md-12 -->
+</div>
+</div>
+
 @include('home._footer')
 
 </body>

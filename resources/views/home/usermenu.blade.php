@@ -5,7 +5,7 @@
                 <div class="widget user">
                     <!-- User Image -->
                     <div class="image d-flex justify-content-center">
-                        <img src="{{asset('assets')}}/images/user/user-thumb.jpg" alt="" class="">
+                        <img src="{{asset('storage/'. Auth::user()->profile_photo_path)}}" class="img-circle" width="60">
                     </div>
                     <!-- User Name -->
                     <h5 class="text-center">{{Auth::user()->name}}</h5>

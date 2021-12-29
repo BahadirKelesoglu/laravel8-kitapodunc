@@ -13,6 +13,7 @@ $setting = \App\Http\Controllers\HomeController::getsetting()
                 <div class="block about">
                     <!-- footer logo -->
                     <img src="{{asset('assets')}}/images/logo-footer.png" alt="">
+                    <br>
                     <!-- description -->
                     <strong style="color: white">Company: {{$setting->company}}</strong>  <br>
                     <strong style="color: white">Address: {{$setting->address}}</strong>  <br>

@@ -69,7 +69,7 @@
 <!-- MAINMENU -->
 <div class="col-md-9">
 
-<!--@ include('profile.show') -->
+<!--@include('profile.show') -->
 
 </div>
     </div>
