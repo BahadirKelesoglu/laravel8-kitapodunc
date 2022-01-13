@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Us</title>
 
+
     <!-- FAVICON -->
     <link href="{{asset('assets')}}/img/favicon.png" rel="shortcut icon">
     <!-- PLUGINS CSS STYLE -->

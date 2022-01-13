@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{$data->title}} Listesi</title>
-    <meta name="description" content="@yield('desc')">
-    <meta name="keywords" content="@yield('key')">
+    <meta name="description" content="{{$data->description}}">
+    <meta name="keywords" content="{{$data->keywords}}">
     <meta name="author" content="Bahadir Kelesoglu">
 
     <!-- FAVICON -->
