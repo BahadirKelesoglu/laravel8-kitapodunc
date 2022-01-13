@@ -83,9 +83,7 @@
                                     <a class="nav-link login-button" href="{{route('logout')}}"><strong>Logout</strong></a>
                             </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="{{asset('assets')}}/ad-listing.html"><i class="fa fa-plus-circle"></i> Add Listing</a>
-                                </li>
+
                             @endauth
                             @guest
                                 <a class="nav-link login-button" href="{{route('login')}}">Login</a>

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Book;
+use App\Models\Reservation;
 
 
 class HomeController extends Controller
@@ -13,7 +14,8 @@ class HomeController extends Controller
     }
 
     public  function index(){
-       return view('admin.index');
+        $datalist = Reservation::all();
+       return view('admin.index',['datalist'=>$datalist]);
     }
 
 

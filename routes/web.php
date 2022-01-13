@@ -53,7 +53,7 @@ Route::middleware(['auth'])->prefix('user')->namespace('user')->group(function (
 
         Route::get('/', [\App\Http\Controllers\ReservationController::class, 'index'])->name('user_reservations');
         Route::get('create/{id}', [\App\Http\Controllers\ReservationController::class, 'create'])->name('user_reservation_add');
-        Route::post('store{id}', [\App\Http\Controllers\ReservationController::class, 'store'])->name('user_reservation_store');
+        Route::post('store/{id}', [\App\Http\Controllers\ReservationController::class, 'store'])->name('user_reservation_store');
         Route::get('edit/{id}', [\App\Http\Controllers\ReservationController::class, 'edit'])->name('user_reservation_edit');
         Route::post('update/{id}', [\App\Http\Controllers\ReservationController::class, 'update'])->name('user_reservation_update');
         Route::get('delete/{id}', [\App\Http\Controllers\ReservationController::class, 'destroy'])->name('user_reservation_delete');

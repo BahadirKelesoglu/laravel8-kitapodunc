@@ -21,7 +21,7 @@
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-desktop"></i>
-                    <span>Tools</span>
+                    <span>Books Tools</span>
                 </a>
                 <ul class="sub">
                     <li><a  href="{{ route('admin_category') }}">Category</a></li>

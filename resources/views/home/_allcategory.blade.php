@@ -16,6 +16,7 @@
                 </div>
             </div>
             @foreach($daily as $rs)
+                @if($rs->status == 'True')
             <div class="col-lg-3 col-sm-6">
                 <div class="card my-3 my-lg-0">
                     <a href="{{route('book', ['id'=>$rs->id,'slug'=>$rs->slug])}}">
@@ -25,12 +26,11 @@
                         <a href="{{route('book', ['id'=>$rs->id,'slug'=>$rs->slug])}}"> <h5 class="card-title">{{$rs->title}}</h5></a>
                         <p class="card-text">{{$rs->author}}</p>
                         <p class="card-text">{{$rs->subject}}</p>
-                        <a href="{{route('addtocard', ['id'=>$rs->id])}}">
-                            <p class="text-green-50"><i style="font-size: 30px" class="fa fa-shopping-basket"></i></p>
-                        </a>
+
                     </div>
                 </div>
             </div>
+                @endif
             @endforeach
             </div>
         <br>
@@ -46,6 +46,7 @@
                 </div>
             </div>
             @foreach($last as $rs)
+                @if($rs->status == 'True')
             <div class="col-lg-3 col-sm-6">
                 <div class="card my-3 my-lg-0">
                    <a href="{{route('book', ['id'=>$rs->id,'slug'=>$rs->slug])}}"> <img class="card-img-top" style="height: 200px; height: 300px" src="{{Storage::url($rs->image)}}" class="img-fluid w-100" alt="Card image cap">
@@ -54,12 +55,11 @@
                         <a href="{{route('book', ['id'=>$rs->id,'slug'=>$rs->slug])}}"><h5 class="card-title">{{$rs->title}}</h5></a>
                         <p class="card-text">{{$rs->author}}</p>
                         <p class="card-text">{{$rs->subject}}</p>
-                        <a href="{{route('addtocard', ['id'=>$rs->id])}}">
-                            <p class="input-group-btn"><i style="font-size: 30px" class="fa fa-shopping-basket"></i></p>
-                        </a>
+
                     </div>
                 </div>
             </div>
+                @endif
             @endforeach
         </div>
         <!-- LAST END -->

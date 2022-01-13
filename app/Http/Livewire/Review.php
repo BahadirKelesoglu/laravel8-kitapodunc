@@ -28,7 +28,7 @@ class Review extends Component
        $this->validate([
            'subject'=>'required|min:5',
            'review'=>'required|min:10',
-           'rate'=>'required',
+
        ]);
 
        \App\Models\Review::create([
@@ -39,7 +39,7 @@ class Review extends Component
            'subject' => $this->subject,
            'review' => $this->review
        ]);
-       session()->flash('message', 'Revire Send Successfully.');
+       session()->flash('message', 'Review Send Successfully.');
        $this->resetInput();
     }
 }

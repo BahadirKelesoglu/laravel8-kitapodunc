@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
+use App\Models\Reservation;
 use App\Models\Review;
 use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
@@ -36,17 +37,21 @@ class HomeController extends Controller
 
     public function index(){
         $setting = Setting::first();
-        $slider = Book::select('id','title','image','author','subject','publishdate','slug')->limit(4)->get();
-        $daily = Book::select('id','title','image','author','subject','publishdate','slug')->limit(4)->inRandomOrder()->get();
-        $last = Book::select('id','title','image','author','subject','publishdate','slug')->limit(4)->orderByDesc('id')->get();
+        $slider = Book::select('id','title','image','author','subject','publishdate','slug','status')->limit(4)->inRandomOrder()->get();
+        $daily = Book::select('id','title','image','author','subject','publishdate','slug','status')->limit(4)->inRandomOrder()->get();
+        $last = Book::select('id','title','image','author','subject','publishdate','slug','status')->limit(4)->orderByDesc('id')->get();
+
+
 
         $data = [
             'setting'=>$setting,
             'slider'=>$slider,
             'daily'=>$daily,
             'last'=>$last,
-            'page'=>'home'
+            'page'=>'home',
+
         ];
+
         return view('home.index', $data);
     }
 
@@ -55,9 +60,10 @@ class HomeController extends Controller
         $cate = Category::find($id);
         $datalist = Image::where('book_id',$id)->get();
         $reviews = Review::where('book_id',$id)->get();
+        $reservation = Reservation::where('book_id',$id)->get();
         #print_r($data);
         #exit();
-        return view('home.book_detail',['data'=>$data, 'cate'=>$cate, 'datalist'=>$datalist, 'reviews'=>$reviews]);
+        return view('home.book_detail',['data'=>$data, 'cate'=>$cate, 'datalist'=>$datalist, 'reviews'=>$reviews, 'reservation'=>$reservation]);
     }
 
     public function getbook(Request $request){

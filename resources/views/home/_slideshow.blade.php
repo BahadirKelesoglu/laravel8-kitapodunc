@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
-                    <h2>Popüler Kitaplar</h2>
-                    <p>En Çok Satan Kitaplarımızı Sizler İçin Düzenledik.</p>
+                    <h2>Popular Books</h2>
+                    <p>We Organised Our Most Rented Books For You!!</p>
                 </div>
             </div>
         </div>
@@ -22,6 +22,7 @@
             <div class="col-lg-12">
                 <div class="trending-ads-slide">
                     @foreach($slider as $rs)
+                        @if($rs->status == 'True')
                     <!-- product card first -->
                     <div class="col-sm-12 col-lg-4">
                         <!-- product card first? -->
@@ -44,15 +45,7 @@
                                         </li>
                                     </ul>
                                     <p class="card-text">{{$rs->subject}}</p>
-                                    <div class="product-ratings">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -60,6 +53,7 @@
 
                         <!-- product card first END? -->
                     </div>
+                    @endif
                     @endforeach
                     <!-- product card first END -->
 

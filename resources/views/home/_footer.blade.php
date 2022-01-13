@@ -21,7 +21,7 @@ $setting = \App\Http\Controllers\HomeController::getsetting()
                 </div>
             </div>
             <!-- Link list -->
-            <div class="col-lg-2 offset-lg-1 col-md-3">
+            <div class="col-lg-2 offset-lg-3 col-md-3">
                 <div class="block">
                     <h4>Site Pages</h4>
                     <ul>
@@ -34,38 +34,24 @@ $setting = \App\Http\Controllers\HomeController::getsetting()
                 </div>
             </div>
             <!-- Link list -->
-            <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
-                <div class="block">
-                    <h4>Admin Pages</h4>
-                    <ul>
-                        <li><a href="category.html">Category</a></li>
-                        <li><a href="single.html">Single Page</a></li>
-                        <li><a href="store.html">Store Single</a></li>
-                        <li><a href="single-blog.html">Single Post</a>
-                        </li>
-                        <li><a href="blog.html">Blog</a></li>
-
-
-
-                    </ul>
-                </div>
-            </div>
             <!-- Promotion -->
             <div class="col-lg-4 col-md-7">
                 <!-- App promotion -->
-                <div class="block-2 app-promotion">
-                    <div class="mobile d-flex">
-                        <a href="">
-                            <!-- Icon -->
-                            <img src="{{asset('assets')}}/images/footer/phone-icon.png" alt="mobile-icon">
-                        </a>
-                        <p>Get the Dealsy Mobile App and Save more</p>
+
+
+                    <div class="col-sm-6 col-12">
+                        <!-- Social Icons -->
+                        <ul class="social-media-icons text-right">
+
+                            @if($setting->instagram !=null) <li><a style="width: 100px" class="fa fa-instagram" href="{{$setting->instagram}}" target="_blank"></a></li>@endif
+                            @if($setting->twitter !=null) <li><a class="fa fa-twitter" href="{{$setting->twitter}}" target="_blank"></a></li>@endif
+                            @if($setting->youtube !=null) <li><a class="fa fa-youtube" href="{{$setting->youtube}}" target="_blank"></a></li>@endif
+                            @if($setting->facebook !=null) <li><a class="fa fa-facebook" href="{{$setting->facebook}}" target="_blank"></a></li>@endif
+
+                        </ul>
                     </div>
-                    <div class="download-btn d-flex my-3">
-                        <a href="#"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-                        <a href="#" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>
@@ -87,17 +73,7 @@ $setting = \App\Http\Controllers\HomeController::getsetting()
                     <a class="text-primary" href="{{$setting->email}}" target="_blank">{{$setting->email}}</a>
                 </div>
             </div>
-            <div class="col-sm-6 col-12">
-                <!-- Social Icons -->
-                <ul class="social-media-icons text-right">
 
-                       @if($setting->instagram !=null) <li><a class="fa fa-instagram" href="{{$setting->instagram}}" target="_blank"></a></li>@endif
-                       @if($setting->twitter !=null) <li><a class="fa fa-twitter" href="{{$setting->twitter}}" target="_blank"></a></li>@endif
-                       @if($setting->youtube !=null) <li><a class="fa fa-youtube" href="{{$setting->youtube}}" target="_blank"></a></li>@endif
-                       @if($setting->facebook !=null) <li><a class="fa fa-facebook" href="{{$setting->facebook}}" target="_blank"></a></li>@endif
-
-                </ul>
-            </div>
         </div>
     </div>
     <!-- Container End -->

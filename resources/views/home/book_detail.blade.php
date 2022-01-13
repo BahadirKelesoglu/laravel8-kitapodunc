@@ -161,29 +161,10 @@
                                         <div class="media">
                                             <!-- Avater -->
 
-                                            <img src="images/user/user-thumb.jpg" alt="avater">
+                                            <img src="{{asset('storage/'. Auth::user()->profile_photo_path)}}" alt="avater">
                                             <div class="media-body">
                                                 <!-- Ratings -->
-                                                <div class="ratings">
 
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">
-                                                            <i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="fa fa-star"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                                 <div class="name">
                                                     <h5>{{$rs->user->name}}</h5>
                                                 </div>
@@ -215,19 +196,37 @@
 
 
 
-                @auth()
+
+                    @auth()
 
 
 
 
-                    <a href="{{route('user_reservation_add',[$data->id])}}">
-                        <div class="widget price text-center">
 
 
-                            <h4>Add For Rent Apply</h4>
-                            <i style="font-size: 30px" class="fa fa-shopping-basket"></i>
-                        </div>
-                    </a>
+
+
+                            @if(date("Y-m-d") < $data->returndate )
+                                <div class="widget price text-center">
+
+
+
+                                    <h2>Book On Rent </h2>
+                                    <h4>Return Time= {{$data->returndate}}</h4>
+                                    <i style="font-size: 30px" class="fa fa-shopping-basket"></i>
+                                </div>
+                            @else
+                            <a href="{{route('user_reservation_add',[$data->id])}}">
+                                <div class="widget price text-center">
+
+
+
+                                    <h4>Add For Rent Apply</h4>
+                                    <i style="font-size: 30px" class="fa fa-shopping-basket"></i>
+                                </div>
+                            </a>
+
+                        @endif
 
                     @else
                         <a href="{{route('login')}}">
@@ -238,7 +237,10 @@
                                 <i style="font-size: 30px" class="fa fa-shopping-basket"></i>
                             </div>
                         </a>
+
                     @endauth
+
+
 
 
                 </div>

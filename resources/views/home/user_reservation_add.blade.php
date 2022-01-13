@@ -90,11 +90,13 @@
 
                                             <div class="col-lg-6 py-4">
                                                 <label>Taking Date</label>
-                                                <input name="bookdate" type="date" placeholder="Taking Date" class="form-control" required>
+                                                <input name="bookdate" type="date" placeholder="Taking Date" class="form-control"
+                                                       min="{{date('Y-m-d')}}" required>
                                             </div>
                                             <div class="col-lg-6 pt-4">
                                                 <label>Return Date</label>
-                                                <input name="returndate" type="date" placeholder="Return Date" class="form-control" required>
+                                                <input name="returndate" type="date" placeholder="Return Date" class="form-control"
+                                                       min="{{date('Y-m-d')}}" required>
                                             </div>
 
 

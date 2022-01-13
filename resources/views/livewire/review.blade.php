@@ -37,12 +37,13 @@
                         </div>
                         <div class="col-12">
                             @auth()
-                            <button type="submit" class="btn btn-main">Submit</button>
+                            <input type="submit" value="Submit" class="btn btn-main">
                                 @else
                             <a href="/login" class="add-button">For Submit Review Login</a>
                                 @endauth
                         </div>
                     </form>
+                        @livewireScripts
                 </div>
             </div>
 

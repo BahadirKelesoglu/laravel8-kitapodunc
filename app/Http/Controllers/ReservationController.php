@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
@@ -30,6 +31,7 @@ class ReservationController extends Controller
     public function create($id)
     {
         $data = Book::find($id);
+        //$reservation = DB::table('reservations')->where('book_id', '=', $id)->get();
         return view('home.user_reservation_add',['data'=>$data]);
     }
 
@@ -43,12 +45,16 @@ class ReservationController extends Controller
     {
 
         $data=new Reservation();
+        $data2 = Book::find($id);
+        $data2->returndate = $request->input('returndate');
+        $data2->save();
         $data->user_id = Auth::id();
         $data->bookdate = $request->input('bookdate');
         $data->returndate = $request->input('returndate');
         $data->ip = $_SERVER['REMOTE_ADDR'];
         $data->book_id=$id;
         $data->save();
+
 
 
         return redirect()->route('user_reservations')->with('success','Reservation booked successfully');
