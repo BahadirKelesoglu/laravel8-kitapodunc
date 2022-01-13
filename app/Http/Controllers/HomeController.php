@@ -60,10 +60,11 @@ class HomeController extends Controller
         $cate = Category::find($id);
         $datalist = Image::where('book_id',$id)->get();
         $reviews = Review::where('book_id',$id)->get();
+        $reviews2 = Review::where('user_id',$id)->get();
         $reservation = Reservation::where('book_id',$id)->get();
         #print_r($data);
         #exit();
-        return view('home.book_detail',['data'=>$data, 'cate'=>$cate, 'datalist'=>$datalist, 'reviews'=>$reviews, 'reservation'=>$reservation]);
+        return view('home.book_detail',['data'=>$data, 'cate'=>$cate, 'datalist'=>$datalist, 'reviews'=>$reviews, 'reservation'=>$reservation, 'reviews2'=>$reviews2]);
     }
 
     public function getbook(Request $request){

@@ -161,7 +161,8 @@
                                         <div class="media">
                                             <!-- Avater -->
 
-                                            <img src="{{asset('storage/'. Auth::user()->profile_photo_path)}}" alt="avater">
+                                            <img src="{{asset('storage/'. $rs->user->profile_photo_path)}}" alt="">
+
                                             <div class="media-body">
                                                 <!-- Ratings -->
 
