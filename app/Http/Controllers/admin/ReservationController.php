@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class ReservationController extends Controller
 {
@@ -80,11 +82,21 @@ class ReservationController extends Controller
     public function itemupdate(Request $request, Reservation $reservation,$id)
     {
         $data = Reservation::find($id);
-        $data->status=$request->input('status');
-        $data->note=$request->input('note');
-        $data->save();
-        return redirect()->back()->with('success', 'Reservation Has Updated');
-    }
+
+        $data1 = Book::find($data->book_id);
+
+        #dd($data1);
+
+            $data->status = $request->input('status');
+            $data->note = $request->input('note');
+            $data->save();
+        if($data->status == 'Cancelled') {
+            $data1->returndate=null;
+            $data1->save();
+        }
+            return redirect()->back()->with('success', 'Reservation Has Updated');
+        }
+
 
     /**
      * Remove the specified resource from storage.

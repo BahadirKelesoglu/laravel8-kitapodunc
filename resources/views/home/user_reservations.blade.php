@@ -88,12 +88,7 @@
                 <td>{{$rs->id}}</td>
                 <td>{{$rs->book->title}}</td>
                 <td>{{$rs->bookdate}}</td>
-                @if($rs->status != 'Cancelled')
                 <td>{{$rs->returndate}}</td>
-                @else
-                    {{$rs->returndate = ""}}
-                    <td>{{$rs->returndate}}</td>
-                @endif
                 <td>{{$rs->status}}</td>
 
             </tr>

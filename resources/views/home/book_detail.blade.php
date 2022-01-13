@@ -207,7 +207,7 @@
 
 
 
-                            @if(date("Y-m-d") < $data->returndate )
+                            @if(date("Y-m-d") < $data->returndate && $reservation2 != 'Cancelled')
                                 <div class="widget price text-center">
 
 
