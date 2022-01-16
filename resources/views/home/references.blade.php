@@ -30,6 +30,7 @@
     <link href="{{asset('assets')}}/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="{{asset('assets')}}/css/style.css" rel="stylesheet">
+    <link href="{{asset('assets')}}/css/navbar.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
